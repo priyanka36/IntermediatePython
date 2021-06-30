@@ -1,0 +1,29 @@
+Threads : An entity within a process that can be scheduled (also known as "lightweight process")
+A process can spawn multiple Threads
+
+All threads within a process share the same memory
+lightweight
+Starting a thread is faster than starting a process
+Great for I/O bound tasks
+
+
+-Threading is limited by GIL:
+-No effect on CPU bound tasks 
+-Not interruptable and killable
+-Careful with race conditions
+-Race condition occurs when two or more threads try to modify the process at the same time.
+
+
+GIL: Global Interpreter lock
+-A lock that allows one thread at a time to execute in Python
+-Use a different,free threaded Python implementation(Jython,IronPython)
+-Use Python as a wrapper for third party libraries (C/C++) => numpy,scipy
+
+
+In C python there is a technique called reference counting that is used for memory management .in python there is reference count varibale that 
+keeps count of the refrences that point to the object
+When the count reaches 0 the memory pointed by the object can be realeased
+This reference variable needs protection from race conditions
+It can cause leaked memory(never realeased)
+Thats why GIL is implemented 
+To not use GIL we use multiprocessing
